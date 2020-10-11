@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Broken Arm.ogg-750012f5a470aebd07fb182416b4f470.oggstr"
+
+[deps]
+
+source_file="res://sound/Broken Arm.ogg"
+dest_files=[ "res://.import/Broken Arm.ogg-750012f5a470aebd07fb182416b4f470.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

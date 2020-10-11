@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://art/shelf.png" type="Texture" id=1]
+[ext_resource path="res://art/shelffront.png" type="Texture" id=2]
+[ext_resource path="res://scenes/ClimbL.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 48, 8 )
+
+[node name="Shelf" type="Node2D"]
+
+[node name="shelf" type="Sprite" parent="."]
+position = Vector2( 48, -8 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="shelffront" type="Sprite" parent="."]
+position = Vector2( 48, -8 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 0, -8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 48, 0 )
+shape = SubResource( 1 )
+
+[node name="ClimbL" parent="KinematicBody2D" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 0, -8 )
+
+[node name="ClimbR" parent="KinematicBody2D" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 80, -8 )

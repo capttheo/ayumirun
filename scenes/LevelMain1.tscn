@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://art/back1.png" type="Texture" id=1]
+[ext_resource path="res://art/door.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Shelf.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/GameWalls.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Pillar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://art/pillar.png" type="Texture" id=7]
+[ext_resource path="res://scripts/Game.cs" type="Script" id=8]
+[ext_resource path="res://art/PillarLong.png" type="Texture" id=9]
+[ext_resource path="res://scenes/ShelfR.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/LevelChanger.tscn" type="PackedScene" id=11]
+
+[node name="LevelMain1" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="backi2" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="door" type="Sprite" parent="backi2"]
+position = Vector2( 40, 312 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="door" type="Sprite" parent="."]
+position = Vector2( 608, 320 )
+texture = ExtResource( 2 )
+
+[node name="GameWalls" parent="." instance=ExtResource( 4 )]
+
+[node name="Spawn" type="Position2D" parent="."]
+position = Vector2( 64, 336 )
+
+[node name="Pillar2" parent="Spawn" instance=ExtResource( 6 )]
+position = Vector2( 256, -144 )
+
+[node name="Pillar" parent="Spawn/Pillar2" instance=ExtResource( 6 )]
+position = Vector2( 0, -32 )
+
+[node name="pillar2" type="Sprite" parent="Spawn/Pillar2/Pillar"]
+position = Vector2( 0, 176 )
+texture = ExtResource( 7 )
+
+[node name="PillarLong" type="Sprite" parent="Spawn/Pillar2/Pillar"]
+position = Vector2( 0, 160 )
+texture = ExtResource( 9 )
+
+[node name="PillarLong2" type="Sprite" parent="Spawn/Pillar2/Pillar"]
+position = Vector2( 0, 128 )
+texture = ExtResource( 9 )
+
+[node name="PillarLong3" type="Sprite" parent="Spawn/Pillar2/Pillar"]
+position = Vector2( 0, 96 )
+texture = ExtResource( 9 )
+
+[node name="PillarLong4" type="Sprite" parent="Spawn/Pillar2/Pillar"]
+position = Vector2( 0, 64 )
+texture = ExtResource( 9 )
+
+[node name="PillarLong5" type="Sprite" parent="Spawn/Pillar2/Pillar"]
+position = Vector2( 0, 32 )
+texture = ExtResource( 9 )
+
+[node name="PillarLong6" type="Sprite" parent="Spawn/Pillar2/Pillar"]
+position = Vector2( 0, 32 )
+texture = ExtResource( 9 )
+
+[node name="Shelf" parent="." instance=ExtResource( 3 )]
+position = Vector2( 192, 320 )
+
+[node name="Shelf2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 48, 240 )
+
+[node name="Shelf3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 192, 160 )
+
+[node name="Shelf" parent="Shelf3" instance=ExtResource( 10 )]
+position = Vector2( 160, 160 )
+
+[node name="Shelf4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 192, 160 )
+
+[node name="Shelf" parent="Shelf4" instance=ExtResource( 10 )]
+position = Vector2( 160, 0 )
+
+[node name="Shelf2" parent="Shelf4" instance=ExtResource( 10 )]
+position = Vector2( 304, 80 )
+
+[node name="LevelMain2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 608, 368 )

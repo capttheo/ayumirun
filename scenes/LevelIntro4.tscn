@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://art/back14.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Pillar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/LevelChanger.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/GameWalls.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Tutorial.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Shelf.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/MovingPlatform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/Game.cs" type="Script" id=8]
+[ext_resource path="res://art/shelf.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 48, 10 )
+
+[node name="LevelIntro4" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="backi2" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="LevelMain1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 608, 368 )
+
+[node name="GameWalls" parent="." instance=ExtResource( 4 )]
+
+[node name="Spawn" type="Position2D" parent="."]
+position = Vector2( 64, 314 )
+
+[node name="Tutorial" parent="." instance=ExtResource( 5 )]
+position = Vector2( 192, 368 )
+
+[node name="Shelf" parent="." instance=ExtResource( 6 )]
+position = Vector2( -16, 330 )
+
+[node name="Pillar" parent="." instance=ExtResource( 2 )]
+position = Vector2( 144, 336 )
+
+[node name="Pillar3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 336, 352 )
+
+[node name="Pillar2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 336, 304 )
+
+[node name="MovingPlatform" parent="." instance=ExtResource( 7 )]
+position = Vector2( 192, 336 )
+
+[node name="shelf2" type="Sprite" parent="."]
+position = Vector2( 256, 248 )
+texture = ExtResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="shelf2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shelf2/StaticBody2D"]
+shape = SubResource( 1 )

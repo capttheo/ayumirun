@@ -1,0 +1,488 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://art/RunS1.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Player.cs" type="Script" id=2]
+[ext_resource path="res://art/JumpLongS1.png" type="Texture" id=3]
+[ext_resource path="res://art/base.png" type="Texture" id=4]
+[ext_resource path="res://art/fall.png" type="Texture" id=5]
+[ext_resource path="res://art/JumpShortS1.png" type="Texture" id=6]
+[ext_resource path="res://art/baseS1.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 12 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12, 6 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 6, 12 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 17, 12 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 3.0
+
+[sub_resource type="Animation" id=6]
+resource_name = "climbl"
+length = 10.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprClimb:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 4, 6, 8.5, 9.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprClimb:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 4, 6, 8.5, 9.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -32 ), Vector2( 0, -68 ), Vector2( 0, -96 ), Vector2( 8, -96 ), Vector2( 18, -85 ), Vector2( 22, -70 ), Vector2( 26, -70 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 10.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "OnClimbFinished"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "climbr"
+length = 10.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprClimb:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 4, 6.5, 8.5, 9.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprClimb:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 4, 6.5, 8.5, 9.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -32 ), Vector2( 0, -68 ), Vector2( 0, -96 ), Vector2( -8, -96 ), Vector2( -18, -85 ), Vector2( -22, -70 ), Vector2( -26, -70 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 10.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "OnClimbFinished"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("colFront:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("colBottom:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprJumpLong:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprJumpLong:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -34 ), Vector2( 0, -37 ), Vector2( 0, -36.6667 ), Vector2( 0, -40 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 4.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprJumpLong:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("colBottom:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprJumpLong:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, -40 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("colFront:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprJumpShort:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("colFront:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprJumpShort:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -29 ), Vector2( 0, -15 ), Vector2( 0, -14 ), Vector2( 0, -33 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("colBottom:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 17.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprRun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.5, 4, 5.5, 7, 8.5, 9.5, 11, 12.5, 14, 15.5, 17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("colRun:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 7, 9.5, 15.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprRun:offset")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2.5, 4, 5.5, 7, 9.5, 12.5, 14, 15.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -25 ), Vector2( 0, -27 ), Vector2( 0, -28 ), Vector2( 0, -29 ), Vector2( 0, -26 ), Vector2( 0, -26 ), Vector2( 0, -28 ), Vector2( 0, -30 ), Vector2( 0, -28 ), Vector2( 0, -26 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprFall:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprFall:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -32 ), Vector2( 0, -37.447 ), Vector2( 0, -34 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 53.3458, -48.3738 )
+collision_mask = 513
+script = ExtResource( 2 )
+
+[node name="colUpper" type="CollisionShape2D" parent="."]
+modulate = Color( 0.658824, 0.419608, 0.419608, 1 )
+position = Vector2( 0, -36 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="colUpper"]
+visible = false
+margin_left = -6.0
+margin_top = -12.0
+margin_right = 6.0
+margin_bottom = 12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="colFront" type="CollisionShape2D" parent="."]
+modulate = Color( 0.658824, 0.419608, 0.419608, 1 )
+position = Vector2( 18, -30 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Pink" type="ColorRect" parent="colFront"]
+visible = false
+margin_left = -12.0
+margin_top = -6.0
+margin_right = 12.0
+margin_bottom = 6.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="colBottom" type="CollisionShape2D" parent="."]
+modulate = Color( 0.658824, 0.419608, 0.419608, 1 )
+position = Vector2( 13, -12 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="ColorRect" type="ColorRect" parent="colBottom"]
+visible = false
+margin_left = -6.0
+margin_top = -12.0
+margin_right = 6.0
+margin_bottom = 12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="colBase" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -12 )
+shape = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="colBase"]
+visible = false
+margin_left = -6.0
+margin_top = -12.0
+margin_right = 6.0
+margin_bottom = 12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="colRun" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -12 )
+shape = SubResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="colRun"]
+visible = false
+margin_left = -17.0
+margin_top = -12.0
+margin_right = 17.0
+margin_bottom = 12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GrabArea" type="Area2D" parent="."]
+position = Vector2( 10, -54 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="GrabArea"]
+visible = false
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 2.0
+margin_bottom = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sprRun" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -35 )
+vframes = 4
+hframes = 4
+frame = 1
+
+[node name="sprIdle" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 8 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -34 )
+
+[node name="sprJumpLong" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+offset = Vector2( 0, -40 )
+vframes = 3
+hframes = 3
+frame = 4
+
+[node name="sprFall" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+offset = Vector2( 0, -34 )
+hframes = 3
+frame = 2
+
+[node name="sprJumpShort" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 6 )
+offset = Vector2( 0, -33 )
+vframes = 3
+hframes = 3
+frame = 7
+
+[node name="sprClimb" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 7 )
+offset = Vector2( 0, -32 )
+vframes = 3
+hframes = 3
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
+anims/climbl = SubResource( 6 )
+anims/climbr = SubResource( 7 )
+anims/jump1 = SubResource( 8 )
+anims/jumplong = SubResource( 9 )
+anims/jumpshort = SubResource( 10 )
+anims/run = SubResource( 11 )
+anims/touch = SubResource( 12 )
+
+[node name="afterclimb" type="Position2D" parent="."]
+position = Vector2( 32, -48 )
+
+[node name="rayFloor" type="RayCast2D" parent="."]
+position = Vector2( 2.6542, -3.6262 )
+enabled = true
+cast_to = Vector2( 24, 24 )
+collision_mask = 32

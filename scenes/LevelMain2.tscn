@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://art/go3v2.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://art/door.png" type="Texture" id=2]
+[ext_resource path="res://scenes/ShelfR.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/GameWalls.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Tutorial.tscn" type="PackedScene" id=5]
+[ext_resource path="res://art/base.png" type="Texture" id=6]
+[ext_resource path="res://art/back13.png" type="Texture" id=7]
+[ext_resource path="res://scripts/Game.cs" type="Script" id=8]
+[ext_resource path="res://art/heart.png" type="Texture" id=9]
+[ext_resource path="res://art/monkey.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 1 )
+
+[node name="LevelMain2" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="backi2" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+flip_h = true
+
+[node name="GameWalls" parent="." instance=ExtResource( 4 )]
+
+[node name="Spawn" type="Position2D" parent="."]
+position = Vector2( 64, 352 )
+
+[node name="Tutorial" parent="." instance=ExtResource( 5 )]
+position = Vector2( 192, 368 )
+
+[node name="door" type="Sprite" parent="."]
+position = Vector2( 40, 312 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="Shelf" parent="." instance=ExtResource( 3 )]
+position = Vector2( 400, 312 )
+
+[node name="monket" type="Sprite" parent="."]
+position = Vector2( 480, 288 )
+texture = ExtResource( 10 )
+flip_h = true
+hframes = 3
+
+[node name="base" type="Sprite" parent="."]
+position = Vector2( 408, 272 )
+texture = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 208.0
+margin_top = 104.0
+margin_right = 632.0
+margin_bottom = 168.0
+color = Color( 0.254902, 0.501961, 0.627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 216.0
+margin_top = 104.0
+margin_right = 621.0
+margin_bottom = 159.0
+custom_fonts/font = SubResource( 1 )
+text = "TO BE CONTINUED..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heart" type="Sprite" parent="."]
+position = Vector2( 448, 232 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 9 )

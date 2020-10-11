@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 320, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 256 )
+
+[node name="GameWalls" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 320, 368 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+position = Vector2( 0, 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2( 0, 24 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2( -16, -408 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D2"]
+position = Vector2( -320, -160 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/StaticBody2D2"]
+position = Vector2( 320, -160 )
+shape = SubResource( 2 )

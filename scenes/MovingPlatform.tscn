@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/MovingPlatform.cs" type="Script" id=1]
+[ext_resource path="res://art/shelf.png" type="Texture" id=2]
+[ext_resource path="res://scenes/ClimbL.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "left_right"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -96, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -32 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 48, 8 )
+
+[node name="MovingPlatform" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 8, 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+autoplay = "up_down"
+anims/left_right = SubResource( 1 )
+anims/up_down = SubResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Node2D"]
+
+[node name="shelf" type="Sprite" parent="Node2D/KinematicBody2D"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/KinematicBody2D"]
+shape = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="Node2D/KinematicBody2D"]
+visible = false
+margin_left = -32.0
+margin_top = -8.0
+margin_right = 32.0
+margin_bottom = 8.0
+color = Color( 0.533333, 0.756863, 0.501961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClimbL" parent="Node2D/KinematicBody2D" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( -48, -8 )
+
+[node name="ClimbR" parent="Node2D/KinematicBody2D" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 32, -8 )
